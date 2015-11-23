@@ -14,18 +14,18 @@ type Op =
 // valid :: Op -> Int -> Int -> Bool
 let valid op x y =
     match op with
-        | Add -> true
-        | Sub -> x > y
-        | Mul -> true
-        | Div -> x % y = 0
+    | Add -> true
+    | Sub -> x > y
+    | Mul -> true
+    | Div -> x % y = 0
 
 // apply :: Op -> Int -> Int -> Int
 let apply op x y =
     match op with
-        | Add -> x + y
-        | Sub -> x - y
-        | Mul -> x * y
-        | Div -> x / y
+    | Add -> x + y
+    | Sub -> x - y
+    | Mul -> x * y
+    | Div -> x / y
 
 type Expr =
     | Val of int
@@ -96,15 +96,15 @@ let rec exprs =
     function
     | []  -> []
     | [n] -> [Val n]
-    | ns  -> [ for (ls,rs) in split ns do 
-               for l in exprs ls do
-               for r in exprs rs do
-               for e in combine l r do
+    | ns  -> [ for (ls,rs) in split ns    do 
+               for l       in exprs ls    do
+               for r       in exprs rs    do
+               for e       in combine l r do
                yield e ]
 
 // solutions :: [Int] -> Int -> [Expr]
 let solutions ns n = [ for ns' in choices ns do
-                       for e in exprs ns' do
+                       for e   in exprs ns'  do
                        yield eval e = [n] ]
 
 
@@ -121,14 +121,14 @@ let rec results =
     function
     | []  -> []
     | [n] -> [Val n,n]
-    | ns  -> [ for (ls,rs) in split ns do 
-               for lx in results ls do
-               for ry in results rs do
-               for res in combine' lx ry do
+    | ns  -> [ for (ls,rs) in split ns       do 
+               for lx      in results ls     do
+               for ry      in results rs     do
+               for res     in combine' lx ry do
                yield res ]
 
 // solutions' :: [Int] -> Int -> [Expr]
-let solutions' ns n = [ for ns' in choices ns do
+let solutions' ns n = [ for ns'   in choices ns  do
                         for (e,m) in results ns' do
                         if m = n then yield e ]
 
@@ -138,10 +138,10 @@ let solutions' ns n = [ for ns' in choices ns do
 // valid' :: Op -> Int -> Int -> Bool
 let valid' op x y =
     match op with
-        | Add -> x <= y
-        | Sub -> x > y
-        | Mul -> x <> 1 && y <> 1 && x <= y
-        | Div -> (y <> 0) && (y <> 1) && x % y = 0
+    | Add -> x <= y
+    | Sub -> x > y
+    | Mul -> x <> 1 && y <> 1 && x <= y
+    | Div -> (y <> 0) && (y <> 1) && x % y = 0
 
 // combine'' :: Result -> Result -> [Result]
 let combine'' (l,x) (r,y) = [ for o in ops do 
@@ -152,14 +152,14 @@ let rec results' =
     function
     | []  -> []
     | [n] -> [Val n,n]
-    | ns  -> [ for (ls,rs) in split ns do 
-               for lx in results' ls do
-               for ry in results' rs do
-               for res in combine'' lx ry do
+    | ns  -> [ for (ls,rs) in split ns        do 
+               for lx      in results' ls     do
+               for ry      in results' rs     do
+               for res     in combine'' lx ry do
                yield res ]
 
 // solutions'' :: [Int] -> Int -> [Expr]
-let solutions'' ns n = [ for ns' in choices ns do
+let solutions'' ns n = [ for ns'   in choices ns   do
                          for (e,m) in results' ns' do
                          if m = n then yield e ]
 
