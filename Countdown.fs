@@ -1,7 +1,5 @@
 ﻿//---   Countdown example from chapter 11 of Programming in Haskell,
 //---   Graham Hutton, Cambridge University Press, 2007.
-//---
-//---   Transpiled to F# by Simon George as part of FP101x
 
 module CountdownProblem
 
@@ -34,14 +32,14 @@ type Expr =
     | App of Op * Expr * Expr
 
 // values :: Expr -> [Int]
-let rec values expr =
-    match expr with
+let rec values =
+    function
     | Val n         -> [n]
     | App (_, l, r) -> values l @ values r
 
 // eval :: Expr -> [Int]
-let rec eval expr =
-    match expr with
+let rec eval =
+    function
     | Val n         -> if n > 0 then [n] else []
     | App (o, l, r) -> [ for x in eval l do
                          for y in eval r do
@@ -51,20 +49,20 @@ let rec eval expr =
 //---   Combinatorial functions
 
 // subs :: [a] -> [[a]]
-let rec subs l = 
-    match l with
+let rec subs = 
+    function
     | []      -> [[]]
     | (x::xs) -> let yss = subs xs in yss @ List.map (fun y -> x::y) yss
 
 // interleave :: a -> [a] -> [[a]]
-let rec interleave x l =
-    match l with 
+let rec interleave x =
+    function
     | []      -> [[x]]
     | (y::ys) -> (x::y::ys) :: List.map (fun x -> y::x) (interleave x ys)
 
 // perms :: [a] -> [[a]]
-let rec perms l = 
-    match l with
+let rec perms = 
+    function
     | []      -> [[]]
     | (x::xs) -> List.concat (List.map (interleave x) (perms xs))
 
@@ -81,8 +79,8 @@ let solution e ns n = List.contains (values e) (choices ns) && eval e = [n]
 //---   Brute force solution
 
 // split :: [a] -> [([a],[a])]
-let rec split l =
-    match l with
+let rec split =
+    function
     | []      -> []
     | [_]     -> []
     | (x::xs) -> ([x], xs) :: [ for (ls,rs) in split xs -> (x::ls, rs) ]
@@ -94,8 +92,8 @@ let ops = [ Add ; Sub ; Mul ; Div ]
 let combine l r = [ for o in ops -> App (o,l,r) ]
 
 // exprs :: [Int] -> [Expr]
-let rec exprs l =
-    match l with
+let rec exprs =
+    function
     | []  -> []
     | [n] -> [Val n]
     | ns  -> [ for (ls,rs) in split ns do 
@@ -119,8 +117,8 @@ let combine' (l,x) (r,y) = [ for o in ops do
                              if valid o x y then yield (App (o,l,r) , apply o x y) ]
 
 // results :: [Int] -> [Result]
-let rec results l =
-    match l with
+let rec results =
+    function
     | []  -> []
     | [n] -> [Val n,n]
     | ns  -> [ for (ls,rs) in split ns do 
@@ -150,8 +148,8 @@ let combine'' (l,x) (r,y) = [ for o in ops do
                               if valid' o x y then yield (App (o,l,r) , apply o x y) ]
 
 // results' :: [Int] -> [Result]
-let rec results' l =
-    match l with
+let rec results' =
+    function
     | []  -> []
     | [n] -> [Val n,n]
     | ns  -> [ for (ls,rs) in split ns do 
@@ -168,17 +166,17 @@ let solutions'' ns n = [ for ns' in choices ns do
 
 //---   Pretty printing
 
-let showOp o =
-    match o with
+let showOp =
+    function
     | Add -> " + "
     | Sub -> " - "
     | Mul -> " * "
     | Div -> " / "
 
-let rec showExpr e =
-    match e with
+let rec showExpr =
+    function
     | Val n       -> n.ToString()
-    | App (o,l,r) -> let bracket x = match x with
-                                     | Val y -> y.ToString()
-                                     | e     -> "(" + showExpr e + ")"
+    | App (o,l,r) -> let bracket = function
+                                   | Val y -> y.ToString()
+                                   | e     -> "(" + showExpr e + ")"
                      in bracket l + showOp o + bracket r
