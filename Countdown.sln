@@ -5,6 +5,10 @@ VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Countdown", "Countdown.fsproj", "{C399FBF3-CB37-4045-B4D9-B28C432F5E16}"
 EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Countdown.ConsoleApplication", "ConsoleApplication\Countdown.ConsoleApplication.fsproj", "{EF3736C9-1ADA-4CE6-B92C-02FB1B69140E}"
+EndProject
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Countdown.Tests", "Countdown.Tests\Countdown.Tests.fsproj", "{0C83E820-3FE5-46F6-980A-5564EDD0349C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{C399FBF3-CB37-4045-B4D9-B28C432F5E16}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C399FBF3-CB37-4045-B4D9-B28C432F5E16}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C399FBF3-CB37-4045-B4D9-B28C432F5E16}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF3736C9-1ADA-4CE6-B92C-02FB1B69140E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF3736C9-1ADA-4CE6-B92C-02FB1B69140E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF3736C9-1ADA-4CE6-B92C-02FB1B69140E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF3736C9-1ADA-4CE6-B92C-02FB1B69140E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0C83E820-3FE5-46F6-980A-5564EDD0349C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0C83E820-3FE5-46F6-980A-5564EDD0349C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0C83E820-3FE5-46F6-980A-5564EDD0349C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0C83E820-3FE5-46F6-980A-5564EDD0349C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
