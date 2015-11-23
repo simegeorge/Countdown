@@ -8,7 +8,7 @@
     <ProjectGuid>ef3736c9-1ada-4ce6-b92c-02fb1b69140e</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>ConsoleApplication</RootNamespace>
-    <AssemblyName>ConsoleApplication</AssemblyName>
+    <AssemblyName>Countdown.ConsoleApplication</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <TargetFSharpCoreVersion>4.4.0.0</TargetFSharpCoreVersion>
@@ -52,7 +52,7 @@
     <Compile Include="Program.fs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Countdown.fsproj">
+    <ProjectReference Include="..\Countdown\Countdown.fsproj">
       <Name>Countdown</Name>
       <Project>{c399fbf3-cb37-4045-b4d9-b28c432f5e16}</Project>
       <Private>True</Private>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Countdown", "Countdown.fsproj", "{C399FBF3-CB37-4045-B4D9-B28C432F5E16}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Countdown", "Countdown\Countdown.fsproj", "{C399FBF3-CB37-4045-B4D9-B28C432F5E16}"
 EndProject
-Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Countdown.ConsoleApplication", "ConsoleApplication\Countdown.ConsoleApplication.fsproj", "{EF3736C9-1ADA-4CE6-B92C-02FB1B69140E}"
+Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Countdown.ConsoleApplication", "Countdown.ConsoleApplication\Countdown.ConsoleApplication.fsproj", "{EF3736C9-1ADA-4CE6-B92C-02FB1B69140E}"
 EndProject
 Project("{F2A71F9B-5D33-465A-A702-920D77279786}") = "Countdown.Tests", "Countdown.Tests\Countdown.Tests.fsproj", "{0C83E820-3FE5-46F6-980A-5564EDD0349C}"
 EndProject
